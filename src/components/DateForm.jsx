@@ -6,7 +6,7 @@ const DateForm = () => {
   const {
     register,
     watch,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     mode: "onChange",
   });
@@ -20,22 +20,29 @@ const DateForm = () => {
   const monthValue = watch("month");
   const yearValue = watch("year");
 
-  // Update store when values change
+  // Update store when values change and form is valid
   React.useEffect(() => {
-    if (dayValue) setDay(parseInt(dayValue));
-    if (monthValue) setMonth(parseInt(monthValue));
-    if (yearValue) setYear(parseInt(yearValue));
-  }, [dayValue, monthValue, yearValue, setDay, setMonth, setYear]);
+    if (isValid && dayValue && monthValue && yearValue) {
+      setDay(parseInt(dayValue));
+      setMonth(parseInt(monthValue));
+      setYear(parseInt(yearValue));
+    } else {
+      // Reset store values if form is invalid
+      setDay(0);
+      setMonth(0);
+      setYear(0);
+    }
+  }, [dayValue, monthValue, yearValue, isValid, setDay, setMonth, setYear]);
 
-  const fieldStyles = "relative flex flex-col w-32";
+  const fieldStyles = "relative flex flex-col w-28 md:w-32";
 
   const inputStyles =
-    "px-4 py-3 text-lg font-semibold text-gray-800 placeholder-gray-400 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition";
+    "px-3 md:px-4 py-2.5 md:py-3 text-base md:text-lg font-semibold text-gray-800 placeholder-gray-400 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition";
 
   const errorTextStyles = "absolute -bottom-5 left-0 text-xs text-red-500";
 
   return (
-    <form className="flex flex-row items-end gap-6 relative">
+    <form className="flex flex-row items-end gap-4 md:gap-6 relative">
       {/* DAY */}
       <div className={fieldStyles}>
         <label htmlFor="day" className="text-sm font-thin text-gray-500 mb-1">

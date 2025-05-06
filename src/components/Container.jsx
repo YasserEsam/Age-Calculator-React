@@ -5,7 +5,7 @@ import Result from "./Result";
 
 const Container = () => {
   return (
-    <div className="bg-white rounded-3xl rounded-br-[150px] w-full max-w-[660px] min-h-[500px] p-12 shadow-lg">
+    <div className="bg-white rounded-3xl rounded-br-[100px] md:rounded-br-[150px] w-[92%] md:w-full max-w-[660px] min-h-[480px] md:min-h-[500px] p-5 md:p-12 shadow-lg">
       <DateForm />
       <Button />
       <Result />
