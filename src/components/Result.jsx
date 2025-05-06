@@ -9,15 +9,15 @@ const Result = () => {
   return (
     <div className="flex flex-col items-start justify-start leading-none">
       <h1 className="text-[59px] md:text-[80px] mb-2 font-bold text-gray-800 italic">
-        <span className="text-purple-600">{ageYear}</span> years
+        <span className="text-purple-600">{ageYear === 0 ? "--" : ageYear}</span> years
       </h1>
 
       <h1 className="text-[59px] md:text-[80px] mb-2 font-bold text-gray-800 italic">
-        <span className="text-purple-600">{ageMonth}</span> months
+        <span className="text-purple-600">{ageMonth === 0 ? "--" : ageMonth}</span> months
       </h1>
 
       <h1 className="text-[59px] md:text-[80px] mb-2 font-bold text-gray-800 italic">
-        <span className="text-purple-600">{ageDay}</span> days
+        <span className="text-purple-600">{ageDay === 0 ? "--" : ageDay}</span> days
       </h1>
     </div>
   );
